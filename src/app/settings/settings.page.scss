@@ -1,0 +1,17 @@
+:host {
+    .settings-list ion-item{
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+    .settings-list ion-item:last-child{
+        border-bottom: 0px !important;
+    }
+    .settings-list h6, .settings-list p{
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+    .settings-list ion-item ion-grid ion-row ion-col:last-child ion-icon{
+        font-size: 30px;
+        padding:20px 0px !important;
+    }
+    .logoutbtn{ font-size: 24px; }
+}

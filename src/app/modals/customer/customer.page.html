@@ -1,0 +1,25 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons (click)="dismiss()" slot="primary">
+			<ion-button>
+				<ion-icon name="close-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">New Customer</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<form [formGroup]="customerForm" class="register-form" method="post" (ngSubmit)="customerCreation()">
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && customerForm.controls['first_name'].errors?.required }">
+			<ion-input class="form-control-lg" formControlName="first_name" type="text" placeholder="Name"></ion-input>
+		</ion-item>
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && customerForm.controls['mobile_number'].errors }">
+			<ion-input class="form-control-lg" type="tel" formControlName="mobile_number" placeholder="Mobile Number"></ion-input>
+		</ion-item>
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && customerForm.controls['email'].errors }">
+			<ion-input class="form-control-lg" type="email" formControlName="email" placeholder="Email"></ion-input>
+		</ion-item><br /><br />
+		<ion-button type="submit" shape="round" expand="full" size="large" class="shadow login_btn bg-color">Save</ion-button>
+	</form>
+</ion-content>

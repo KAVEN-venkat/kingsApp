@@ -1,0 +1,72 @@
+:host {
+  ion-header, ion-toolbar{
+    --background: #fcedff !important;
+    --border-width: 0;
+  }
+ion-content{
+    --background: #fcedff !important;
+    --background: -moz-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: -webkit-gradient(left top, left bottom, color-stop(0%, #fcedff), color-stop(100%, #ffffff)) !important;
+   --background: -webkit-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: -o-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: -ms-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: linear-gradient(to bottom, #fcedff 0%, #ffffff 100%) !important;
+    --filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcedff', endColorstr='#ffffff', GradientType=0) !important;
+    --background-attachment: fixed !important;
+    --background-position: center top !important;
+    --background-size: 100% 100% !important;
+}
+
+.auth-content {
+	margin: 0% 5%;
+}
+.logo{
+  height: 100%;
+  width: auto;
+  margin: auto;
+  display: block;
+}
+.form-control {
+  background: #ffffff !important;
+  border-radius: 40px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+.item-has-focus{
+   border: 1px solid #6d00be !important;
+}
+.form-error-dynamic-input{
+  border: 1px solid red !important;
+}
+.form-group {
+    margin-bottom: 0.5rem !important;
+}
+.form-control-lg {
+    font-size: 18px;
+}
+
+.shadow {
+    box-shadow: 0 .3rem 0.6rem rgba(0, 0, 0, .1) !important;
+    -webkit-box-shadow: 0 .3rem 0.6rem rgba(0, 0, 0, .1) !important;
+    -moz-box-shadow: 0 .3rem 0.6rem rgba(0, 0, 0, .1) !important;
+    -ms-box-shadow: 0 .3rem 0.6rem rgba(0, 0, 0, .1) !important;
+}
+.bg-color{
+  --background: #6d00be !important;
+  color:#ffffff;
+  box-shadow: none!important;
+}
+.fnt-size{
+  font-size: 24px;
+}
+.header::after {
+  background-image: none;
+}
+.terms_cnds{
+  color: #6d00be;
+  text-decoration: none;
+  background-color: transparent;
+}
+.text-secondary{
+  color:#666666 !important;
+}
+}

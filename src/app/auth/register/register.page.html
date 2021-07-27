@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+  <ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+</ion-header>
+<ion-content class="">
+  <!-- <div class="theme-bg"></div> -->
+  <div class="auth-content">
+    <div padding-horizontal class="animated fadeInDown">
+      <img src="../../assets/logo.png" alt="logo" class="logo">
+    </div>
+  <form [formGroup]="registerForm" class="register-form" method="post" (ngSubmit)="register()">
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && registerForm.controls['first_name'].errors?.required }">
+      <ion-input class="form-control-lg" formControlName="first_name" type="text" placeholder="First Name"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && registerForm.controls['last_name'].errors?.required }">
+      <ion-input class="form-control-lg" type="text" formControlName="last_name" placeholder="Last Name"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && registerForm.controls['mobile_number'].errors }">
+      <ion-input class="form-control-lg" type="tel" formControlName="mobile_number" placeholder="Mobile Number"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && registerForm.controls['email'].errors }">
+      <ion-input class="form-control-lg" type="email" formControlName="email" placeholder="Email"></ion-input>
+    </ion-item>
+  
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && registerForm.controls['password'].errors?.required }">
+      <ion-input class="form-control-lg" type="password" formControlName="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && registerForm.controls['confirm_password'].errors?.required }">
+      <ion-input class="form-control-lg" type="password" formControlName="confirm_password" placeholder="Confirm Password"></ion-input>
+    </ion-item>
+  
+    <p class="ion-text-center text-secondary">By clicking register your are agree to the
+        <a href="javascript:void(0)" class="terms_cnds">Terms and Condition.</a>
+    </p>
+  
+    <ion-button type="submit" shape="round" expand="full" size="large" class="shadow register_btn bg-color">Register</ion-button>
+  </form>
+</div>
+</ion-content>

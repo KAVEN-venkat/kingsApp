@@ -1,0 +1,24 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="">
+  <!-- <div class="theme-bg"></div> -->
+  <div class="auth-content">
+    <div padding-horizontal class="animated fadeInDown">
+      <img src="../../assets/logo.png" alt="logo" class="logo">
+    </div>
+  <form #form="ngForm" class="login-form" method="post" (ngSubmit)="forgot(form)">
+    <ion-item class="form-control form-group" lines="none">
+      <ion-input class="form-control-lg" ngModel type="email" name="email" placeholder="Enter Email"></ion-input>
+    </ion-item>
+  
+    <p class="text-secondary ion-text-center">If you already have password,<br>please <a href="/login" class="bg-color-deeppurple">Sign in</a> here</p>
+  
+    <ion-button type="submit" size="large" shape="round" expand="full" (click)="resetPassword()" class="shadow login_btn bg-color">Reset Password</ion-button>
+  </form>
+</div>
+</ion-content>

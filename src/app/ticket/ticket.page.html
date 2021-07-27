@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+		</ion-buttons>
+		<ion-buttons slot="primary" (click)="newItemModal('item','my-item-modal-css','createItem')">
+			<ion-button>
+				<ion-icon name="add-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-start ion-padding-end">
+	<h6 class="subtitle">Item Lists - {{items.length}}</h6>
+	<ion-grid *ngIf="items">
+		<ion-row class="ticketLists" *ngFor="let item of items" (click)="presentActionSheet(item.id,item.item_name)">
+			<ion-col size="12" class="item_name">
+			<h3 class="ion-text-center">Item: {{item.item_name}} - {{item.category.category_name}}</h3>
+			</ion-col>
+			<ion-col>
+	            <p class="ion-no-margin">Price</p>
+	            <p class="ion-no-margin">Digits</p>			
+		        <p class="ion-no-margin">Time</p>
+		        <p class="ion-no-margin">Code</p>
+			</ion-col>
+			<ion-col>
+	            <p class="ion-no-margin"> : {{item.item_price}}</p>
+	            <p class="ion-no-margin"> : {{item.item_digits}}</p>			
+		        <p class="ion-no-margin"> : {{item.result_time}}</p>
+		        <p class="ion-no-margin"> : {{item.result_code}}</p>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

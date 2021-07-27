@@ -1,0 +1,97 @@
+:host {
+.form-control {
+  background: #ffffff !important;
+  border-radius: 40px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+.form-group {
+    margin-bottom: 0.5rem !important;
+    height: calc(1.5em + .75rem + 2px);
+}
+.form-control-lg {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+}
+
+.shadow {
+    box-shadow: 0 .3rem 0.6rem rgba(0, 0, 0, .1) !important;
+    -webkit-box-shadow: 0 .3rem 0.6rem rgba(0, 0, 0, .1) !important;
+    -moz-box-shadow: 0 .3rem 0.6rem rgba(0, 0, 0, .1) !important;
+    -ms-box-shadow: 0 .3rem 0.6rem rgba(0, 0, 0, .1) !important;
+}
+.bg-color{
+    --background: #6d00be !important;
+      color: #ffffff;
+      box-shadow: none !important;
+      height: 2.5rem;
+      font-size: larger;
+  }
+  .order_btn{
+    --background: none !important;
+    color: #6d00be !important;
+  }
+.fnt-size{
+  font-size: 24px;
+}
+.header::after {
+  background-image: none;
+}
+.thumbnail_img{
+  width:158px;
+  height:158px;
+  height: 178px;
+  width: 178px;
+  border-radius: 90px;
+  border: 10px solid #6d00be;
+  margin: 0 auto;
+}
+.thumbnail_img img{ border-radius: 90px; position: relative; }
+.subtitle {
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+.profile-form ion-label{
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0px 15px;
+}
+ion-select{
+  max-width: 100%; 
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+}
+.logoutbtn{ font-size: 24px; }
+.item-digits ion-col ion-item ion-label{
+margin: 0px !important;
+}
+.item-select, .ion-item-radio{
+  --min-height: calc(1.5em + .75rem + 2px) !important;
+  --max-height: calc(1.5em + .75rem + 2px) !important;  
+  height: calc(1.5em + .75rem + 2px) !important;
+}
+.inner_padding_top{
+  --inner-padding-top: 0px !important;
+}
+.remove_icon{
+  font-size: 24px;
+}
+.item_fab, .hydrated{
+  font-weight: bold;
+}
+.item_fab_col {
+    --margin-top: var(--ion-margin, 8px);
+    margin-top: var(--ion-margin, 8px);
+}
+}

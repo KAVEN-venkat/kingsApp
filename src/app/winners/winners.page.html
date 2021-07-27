@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+		</ion-buttons>
+		<ion-buttons slot="primary" (click)="newwinnerModal()">
+			<ion-button>
+				<ion-icon name="add-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row class="header-section">
+			<ion-col class="ion-text-left">Date</ion-col>
+			<ion-col class="ion-text-center">Time</ion-col>
+			<ion-col class="ion-text-right">Winner</ion-col>
+		</ion-row>
+		<div *ngIf="winners">
+			<ion-row class="winner-list" *ngFor="let winner of winners">
+				<ion-col class="ion-text-left">{{winner.winner_date | date:'dd-MM-yyyy'}}</ion-col>
+				<ion-col class="ion-text-center">{{winner.result_time}}</ion-col>
+				<ion-col class="ion-text-right">{{winner.winner_d}}{{winner.winner_e}}{{winner.winner_a}}{{winner.winner_b}}{{winner.winner_c}}</ion-col>
+			</ion-row>
+		</div>
+	</ion-grid>
+</ion-content>

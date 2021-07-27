@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="">
+  <!-- <div class="theme-bg"></div> -->
+  <div class="auth-content">
+    <div padding-horizontal class="animated fadeInDown">
+      <img src="../../assets/logo.png" alt="logo" class="logo">
+    </div>
+  <form [formGroup]="loginForm" class="login-form" method="post" (ngSubmit)="login()">
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && loginForm.controls['mobile'].errors?.required }">
+      <ion-input class="form-control-lg" type="tel" formControlName="mobile" placeholder="Mobile Number"></ion-input>
+    </ion-item>
+  
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && loginForm.controls['password'].errors?.required }">
+      <ion-input class="form-control-lg" type="password" formControlName="password" placeholder="Password"></ion-input>
+    </ion-item>
+  
+    <p class="ion-text-center forgot_password" (click)="forgot()">Forgot Password?</p>
+  
+    <ion-button type="submit" shape="round" expand="full" size="large" class="shadow login_btn bg-color">Login</ion-button>
+  </form>
+</div>
+</ion-content>

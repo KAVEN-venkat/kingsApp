@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start" (click)="closeLuckyModal()">
+			<ion-button>
+				<ion-icon name="arrow-back-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+	<form [formGroup]="luckyForm" class="new-item-form ion-no-padding" method="post" (ngSubmit)="luckyCreation()">
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && luckyForm.controls['item_id'].errors?.required }">
+			<ion-select interface="action-sheet" class="ion-no-padding" placeholder="Select Item" formControlName="item_id" (ionChange)="getItemById($event)">
+				<ion-select-option *ngFor="let item of items" value="{{item.id}}">{{item.item_name}} ({{item.category.category_name}})</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<div *ngIf="digits.length > 0">
+			<ion-grid class="ion-no-padding lucky_price">
+				<ion-row *ngFor="let ticket of t.controls; let i = index" [formGroup]="ticket">
+					<ion-col>
+						<div>
+							<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && ticket.controls['price'].errors?.required }">
+						    	<ion-input class="form-control-lg ion-no-padding" type="tel" placeholder="{{digits[i]}}st Price" formControlName="price"></ion-input>
+							</ion-item>
+						</div>
+					</ion-col>
+					<ion-col>
+						<div>
+							<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && ticket.controls['bonus'].errors?.required }">
+						    	<ion-input class="form-control-lg ion-no-padding" type="tel" placeholder="Bonus" formControlName="bonus"></ion-input>
+							</ion-item>
+						</div>
+					</ion-col>
+					<ion-col>
+						<div>
+							<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && ticket.controls['stbonus'].errors?.required }">
+						    	<ion-input class="form-control-lg ion-no-padding" type="tel" placeholder="ST Bonus" formControlName="stbonus"></ion-input>
+							</ion-item>
+						</div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			<br />
+		<ion-button type="submit" shape="round" expand="full" size="large" class="shadow login_btn bg-color">Save</ion-button>
+		</div>
+	</form>
+</ion-content>

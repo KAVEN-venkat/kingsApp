@@ -1,0 +1,19 @@
+:host {
+    .header-row{
+        background-color: #f4f5f8;
+        font-weight: bold;
+    }
+    .header-row ion-col{
+        font-size: 13px;
+        width: 8px;
+    }
+    .ion-text-center{
+        font-size: 12px !important;
+    }
+    .footer-row ion-col{
+        border-top:1px solid gray;
+        font-weight: bold;
+    }
+    .items-row:nth-child(odd) {background: #FFF}
+    .logoutbtn{ font-size: 24px; }
+}

@@ -1,0 +1,25 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/register"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="">
+  <!-- <div class="theme-bg"></div> -->
+  <div class="auth-content">
+    <div padding-horizontal class="animated fadeInDown ion-text-center">
+      <img src="../../assets/information-graphics-otp.png" alt="logo">
+    </div>
+  <form [formGroup]="otpForm" class="register-form" method="post" (ngSubmit)="verified()">
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && otpForm.controls['otp'].errors }">
+      <ion-input class="form-control-lg" type="password" formControlName="otp" placeholder="Enter OTP"></ion-input>
+    </ion-item>
+ 
+    <p class="ion-text-center text-secondary"> We have sent high security one time password to your email address. Please enter above and confirm.
+    </p>
+  
+    <ion-button type="submit" shape="round" size="large" expand="full" class="shadow register_btn bg-color">Verify</ion-button>
+  </form>
+</div>
+</ion-content>

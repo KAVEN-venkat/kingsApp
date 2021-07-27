@@ -1,0 +1,148 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+			
+		</ion-buttons>
+		<!--<ion-buttons slot="primary">
+			<ion-button>
+				<ion-icon name="log-out-outline" class="logoutbtn" ></ion-icon>
+			</ion-button>
+		</ion-buttons>-->
+		<ion-title class="ion-text-center">
+			<img src="../../assets/logo-header.png" alt="" class="header-logo">
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card class="card-class">
+		<ion-card-header class="ion-no-padding">
+			<ion-item class="deeppurple-theme-bg" *ngIf="customer">
+				<ion-thumbnail slot="start">
+					<img src="{{img_url}}uploads/profile/{{customer.photo}}" *ngIf="customer && customer.photo != null">
+    				<img src="{{img_url}}images/no_img.png" *ngIf="customer && customer.photo == null">
+				</ion-thumbnail>
+				<ion-label>
+					<h3>{{customer.first_name}} {{customer.last_name}}</h3>
+					<p>{{customer.email}}</p>
+				</ion-label>
+			</ion-item>
+		</ion-card-header>
+		<ion-card-content class="ion-no-padding">
+			<ion-grid>
+				<ion-row>
+					<ion-col size="9" size-lg>
+						<h3 class="mb-0 font-weight-normal">Rs. {{ total | number:'1.2-2' }}</h3>
+                        <p class="text-mute">Today Sale</p>
+					</ion-col>
+					<ion-col size="3" size-lg>
+						<ion-fab class="fab_class">
+						    <ion-fab-button>
+						    	<ion-icon name="cash"></ion-icon>
+						    </ion-fab-button>
+						</ion-fab>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			<!--<ion-grid class="card-footer">
+				<ion-row>
+					<ion-col class="ion-text-center">
+						<h3 class="mb-0 font-weight-normal">INR 71.00<ion-icon name="arrow-down-outline" color="success"></ion-icon></h3>
+					</ion-col>
+					<ion-col class="ion-text-center">
+						<h3 class="mb-0 font-weight-normal">INR 71.00<ion-icon name="arrow-up-outline" color="danger"></ion-icon></h3>
+					</ion-col>
+				</ion-row>
+			</ion-grid>-->
+		</ion-card-content>
+	</ion-card>
+
+	<ion-segment color="primary" [(ngModel)]="type" (ionChange)="segmentChanged($event)" scrollable>
+		<ion-segment-button value="ticket" class="segmentcss">
+			<ion-label>Items</ion-label>
+			<ion-icon name="clipboard-outline"></ion-icon>
+		</ion-segment-button>
+		<ion-segment-button value="categories" class="segmentcss">
+			<ion-label>Category</ion-label>
+			<ion-icon name="people-outline"></ion-icon>
+		</ion-segment-button>
+		<ion-segment-button value="sales" checked class="segmentcss">
+			<ion-label>Sale</ion-label>
+			<ion-icon name="cash"></ion-icon>
+		</ion-segment-button>
+		
+		<ion-segment-button value="result" class="segmentcss">
+			<ion-label>Result</ion-label>
+			<ion-icon name="book-outline"></ion-icon>
+		</ion-segment-button>
+		<ion-segment-button value="settings" class="segmentcss">
+			<ion-label>Settings</ion-label>
+			<ion-icon name="settings-outline"></ion-icon>
+		</ion-segment-button>
+	</ion-segment>
+	<div class="scrolling-wrapper" *ngIf="items">
+        <div class="card" *ngFor="let item of items">
+          <ion-card>
+            <ion-card-header class="ion-no-border">
+              <ion-card-title>{{item.item_name}} <span class="category-name">({{item.category.category_name}})</span><br><span class="price-section">(Rs. {{item.item_price}})</span></ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+               {{item.result_code}}
+            </ion-card-content>
+          </ion-card>
+        </div>        
+    </div>
+
+    <div class="scrolling-wrapper">
+        <div class="card offer-slide">
+			<ion-grid>
+				<ion-row>
+					<ion-col size="3" size-lg>
+						<img src="../../assets/graphics-carousel-scheme1.png" alt="" class="mw-100">
+					</ion-col>
+					<ion-col size="9" size-lg>
+						<div class="">
+                            <h3>Gold loan scheme</h3>
+                            <p>Get all money at market rate of gold</p>
+                        </div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+        </div>
+        <div class="card offer-slide">
+			<ion-grid>
+				<ion-row>
+					<ion-col size="3" size-lg>
+						<img src="../../assets/graphics-carousel-scheme1.png" alt="" class="mw-100">
+					</ion-col>
+					<ion-col size="9" size-lg>
+						<div class="">
+                            <h3>Gold loan scheme</h3>
+                            <p>Get all money at market rate of gold</p>
+                        </div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+        </div>
+    </div>
+
+	<div class="ion-text-center">
+        <h3 class="subtitle mb-1">Recent Sale</h3>
+        <p class="text-secondary">Last four customer's sale</p>
+    </div>
+    <ion-grid class="recent-sale">
+    	<ion-row *ngIf="orders">
+    		<ion-col size="6" class="ion-text-center" *ngFor="let order of orders">
+    			<div>
+	    			<!--<ion-avatar class="ion-margin-start">
+						<img src="../../assets/logo-header.png" *ngIf="order.customer && order.customer.photo != null">
+    					<img src="{{img_url}}images/no_img.png" *ngIf="order.customer && order.customer.photo == null">
+					</ion-avatar>-->
+					<p class="text-secondary text-mute small">{{order.item.item_name}} ({{order.item.category.category_name}}) (Rs. {{order.item.item_price}})</p>
+					<p class="text-secondary text-mute small">Qty:- {{order.total_items}}</p>
+            	</div>
+    		</ion-col>    		
+    	</ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons (click)="dismiss()" slot="primary">
+			<ion-button>
+				<ion-icon name="close-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">Your Type</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<ion-item class="form-control form-group" lines="none">
+		<ion-label class="ion-text-center">Your Type</ion-label>
+		<ion-select value="" placeholder="Select Type" okText="Okay" cancelText="Dismiss">
+			<ion-select-option value="dealer">Dealer</ion-select-option>
+			<ion-select-option value="subdealer">Sub-Dealer</ion-select-option>
+		</ion-select>
+	</ion-item>
+	<ion-item class="form-control form-group" lines="none">
+		<ion-label class="ion-text-center">Your Parent</ion-label>
+		<ion-select value="" placeholder="Select Parent" okText="Okay" cancelText="Dismiss">
+			<ion-select-option value="dealer">Dealer</ion-select-option>
+			<ion-select-option value="subdealer">Sub-Dealer</ion-select-option>
+		</ion-select>
+	</ion-item><br>
+	<ion-button type="submit" shape="round" expand="full" size="large" (click)="login()" class="shadow login_btn bg-color">Save</ion-button>
+</ion-content>

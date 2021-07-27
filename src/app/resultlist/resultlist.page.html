@@ -1,0 +1,72 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons (click)="dismiss()" slot="primary">
+			<ion-button>
+				<ion-icon name="close-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">
+			<img src="../../assets/logo-header.png" alt="" class="header-logo">
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+	<ion-grid *ngIf="items && customer">
+		<ion-row>
+			<ion-col>
+				{{customer.first_name}} {{customer.last_name}}<br>
+				{{customer.mobile}}
+				{{customer.email}}
+			</ion-col>
+			<ion-col class="ion-text-right">
+				Date: {{result_from | date:'dd-MM-yyyy'}} to {{result_to | date:'dd-MM-yyyy'}}
+			</ion-col>
+		</ion-row>
+		<ion-row class="header-row ion-text-center">
+			<ion-col>Name</ion-col>
+			<ion-col>Rate</ion-col>
+			<ion-col>Desp</ion-col>
+			<ion-col>Total</ion-col>
+			<ion-col>Bonus</ion-col>
+			<ion-col class="ion-text-right">SW_Amount</ion-col>
+		</ion-row>
+		<ion-row class="ion-text-center items-row" *ngFor="let item of items">
+			<ion-col>{{item.item_name}}</ion-col>
+			<ion-col>{{addFloatvalues(item.item_price,item.extra_price)}}</ion-col>
+			<ion-col>{{item.item_qty}}</ion-col>
+			<ion-col class="ion-text-right">{{item.item_total}}</ion-col>
+			<ion-col class="ion-text-right">{{item.bonus}}</ion-col>
+			<ion-col class="ion-text-right">{{item.winning_amount}}</ion-col>		
+		</ion-row>
+		<ion-row class="footer-row">
+			<ion-col>Grand</ion-col>
+			<ion-col>Total</ion-col>
+			<ion-col>{{orders.total_qty}}</ion-col>
+			<ion-col class="ion-text-center">{{orders.total_amount}}</ion-col>
+			<ion-col class="ion-text-right">{{orders.total_bonus}}</ion-col>
+			<ion-col class="ion-text-right">{{orders.winning_total}}</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Current Receivable</ion-col>
+			<ion-col>: {{orders.total_amount}} (-)</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Super_Spl. Value</ion-col>
+			<ion-col>: {{orders.total_bonus}}</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Sold_Winning Value</ion-col>
+			<ion-col>: {{orders.winning_total}}</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>Net Receivable</ion-col>
+			<ion-col>: 
+				<ion-text [color]="(orders.total_amount - (orders.total_bonus + orders.winning_total) >= 0) ? 'success' : 'danger'">{{orders.total_amount - (orders.total_bonus + orders.winning_total)}}</ion-text>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+
+	
+</ion-content>

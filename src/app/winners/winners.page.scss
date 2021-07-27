@@ -1,0 +1,13 @@
+:host {
+    .logoutbtn{ font-size: 24px; }
+    .header-section .hydrated{
+        font-size: 12px !important;
+        font-weight: bold !important;
+    }
+    .winner-list .hydrated{
+        font-size: 14px !important;
+    }
+    .winner-list:nth-child(even) {
+        background-color:#fff;
+    }
+}

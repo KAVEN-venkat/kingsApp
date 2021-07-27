@@ -1,0 +1,26 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons (click)="dismiss()" slot="primary">
+			<ion-button>
+				<ion-icon name="close-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">Customer Price</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<form [formGroup]="customerpriceForm" class="new-item-price-form ion-no-padding" method="post" (ngSubmit)="customerPrice()">
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && customerpriceForm.controls['user_id'].errors?.required }">
+			<ion-label class="ion-text-center">Customer</ion-label>
+			<ion-select class="ion-no-padding" placeholder="Select Customer" okText="Ok" cancelText="Cancel" formControlName="user_id">
+				<ion-select-option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.first_name}} {{customer.last_name}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && customerpriceForm.controls['extra_price'].errors?.required }">
+	    	<ion-input class="form-control-lg ion-no-padding" type="tel" formControlName="extra_price" placeholder="Extra Price"></ion-input>
+		</ion-item>
+		<br />
+		<ion-button type="submit" shape="round" expand="full" size="large" class="shadow login_btn bg-color">Save</ion-button>
+	</form>
+</ion-content>

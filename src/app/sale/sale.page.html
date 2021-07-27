@@ -1,0 +1,126 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+		</ion-buttons>
+		<ion-buttons slot="primary" (click)="viewSale()">
+			<ion-button>
+				<ion-icon name="eye-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<form [formGroup]="saleForm" class="profile-form ion-padding" method="post" (ngSubmit)="newSale()">
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['sale_date'].errors?.required }">
+			<ion-datetime class="form-control-lg ion-no-padding" placeholder="Select Date" formControlName="sale_date"></ion-datetime>
+		</ion-item>
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['customer_id'].errors?.required }">
+			<ion-select placeholder="Select Customer" interface="action-sheet" class="ion-no-padding" *ngIf="customers" formControlName="customer_id">
+				<ion-select-option class="ion-no-padding" *ngFor="let customer of customers" value="{{customer.id}}">{{customer.first_name}} {{customer.last_name}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-row>
+			<ion-col>
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['category_id'].errors?.required }">
+					<ion-select placeholder="Select Category" interface="action-sheet" class="ion-no-padding" *ngIf="categories" formControlName="category_id" (ionChange)="getItemByCategory($event)">
+						<ion-select-option class="ion-no-padding" *ngFor="let category of categories" value="{{category.id}}">{{category.category_name}}</ion-select-option>
+					</ion-select>
+				</ion-item>
+			</ion-col>
+			<ion-col>
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_id'].errors?.required }">
+					<ion-select interface="action-sheet" placeholder="Select Item" class="ion-no-padding" formControlName="item_id" (ionChange)="getItemId($event)">
+						<ion-select-option class="ion-no-padding" *ngFor="let item of items" value="{{item.id}}">{{item.item_name}}</ion-select-option>
+					</ion-select>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<div *ngIf="max_length < 3">
+			<ion-radio-group allow-empty-selection formControlName="item_boards">
+				<ion-row radio-group class="item-boards">
+					<!--<ion-col>
+						<ion-item class="form-control form-group ion-item-radio" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_boards'].errors?.required }">
+							<ion-label>Single</ion-label>
+							<ion-radio color="primary" value="single"></ion-radio>
+						</ion-item>
+					</ion-col>-->
+					<ion-col>
+						<ion-item class="form-control form-group ion-item-radio" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_boards'].errors?.required }">
+							<ion-label>All Board</ion-label>
+							<ion-radio color="primary" value="allboard"></ion-radio>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</ion-radio-group>
+		</div>
+	    <ion-radio-group allow-empty-selection formControlName="item_digits">
+			<ion-row radio-group class="item-digits">
+				<ion-col>
+					<ion-item class="form-control form-group ion-item-radio" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_digits'].errors?.required }">
+						<ion-label>T</ion-label>
+						<ion-radio color="primary" value="T"></ion-radio>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item class="form-control form-group ion-item-radio" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_digits'].errors?.required }">
+						<ion-label>D</ion-label>
+						<ion-radio color="primary" value="D"></ion-radio>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item class="form-control form-group ion-item-radio" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_digits'].errors?.required }">
+						<ion-label>S</ion-label>
+						<ion-radio color="primary" value="S"></ion-radio>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item class="form-control form-group ion-item-radio" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_digits'].errors?.required }">
+						<ion-label>C</ion-label>
+						<ion-radio color="primary" value="C" ></ion-radio>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-radio-group>
+		<ion-row>
+	    	<ion-col>
+			    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_from'].errors?.required }">
+				  <ion-input #fromFocus class="form-control-lg ion-no-padding" type="tel" pattern="[0-9]*" formControlName="item_from" placeholder="From" minlength="{{min_length}}" maxlength="{{max_length}}" (ionChange)="getItemFrom($event)"></ion-input>
+			    </ion-item>
+	    	</ion-col>
+	    	<ion-col>
+			    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_to'].errors?.required }">
+			      <ion-input #toFocus (ionFocus)="removeText()" class="form-control-lg ion-no-padding" type="tel" pattern="[0-9]*" formControlName="item_to" placeholder="To" minlength="{{min_length}}" maxlength="{{max_length}}" (ionChange)="getItemTo($event)"></ion-input>
+			    </ion-item>
+	    	</ion-col>
+			<ion-col>
+			    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && saleForm.controls['item_qty'].errors?.required }">
+			      <ion-input #qtyFocus class="form-control-lg ion-no-padding" type="number" pattern="[0-9]*" formControlName="item_qty" placeholder="Quantity"></ion-input>
+			    </ion-item>
+	    	</ion-col>
+	    </ion-row>
+		<ion-button type="submit" shape="round" expand="full" size="large" class="shadow register_btn bg-color">ADD</ion-button>
+		<br/>
+		<ion-grid class="printTable">
+			<ion-row class="header">
+				<ion-col>Item</ion-col>
+				<ion-col>Number</ion-col>
+				<ion-col>Qty</ion-col>
+				<ion-col>Total</ion-col>
+				<ion-col>Action</ion-col>
+			</ion-row>
+			<ion-row *ngFor="let order of orders;let i">
+				<ion-col>{{order.item.item_name}}</ion-col>
+				<ion-col>{{order.item_number}}</ion-col>
+				<ion-col>{{order.item_qty}}</ion-col>
+				<ion-col>{{order.total_price}}</ion-col>
+				<ion-col>
+					<ion-icon name="trash-outline" (click)="removeOrder(i,order.id,order.item_number)"></ion-icon>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	    <ion-button shape="round" expand="full" size="large" (click)="checkBluetooth()" class="shadow order_btn bg-color">PRINT</ion-button>
+	</form>
+</ion-content>

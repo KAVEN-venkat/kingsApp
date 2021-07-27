@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">
+			<img src="../../assets/logo-header.png" alt="" class="header-logo">
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+	<form [formGroup]="resultForm" class="profile-form ion-padding" method="post" (ngSubmit)="viewResult()">
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && resultForm.controls['user_type'].errors?.required }">
+			<ion-select placeholder="Select User Type" interface="action-sheet" class="ion-no-padding" *ngIf="userTypes" formControlName="user_type" (ionChange)="getUserByType($event)">
+				<ion-select-option class="ion-no-padding" *ngFor="let userType of userTypes" value="{{userType.name}}">{{userType.value}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && resultForm.controls['customer_id'].errors?.required }">
+			<ion-select placeholder="Select Customer" class="ion-no-padding" interface="action-sheet" *ngIf="customers" formControlName="customer_id">
+				<ion-select-option class="ion-no-padding" *ngFor="let customer of customers" value="{{customer.id}}">{{customer.first_name}} {{customer.last_name}}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-row>
+			<ion-col class="ion-no-padding">
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && resultForm.controls['result_from'].errors?.required }">
+					<ion-datetime class="form-control-lg ion-no-padding" placeholder="From Date" formControlName="result_from"></ion-datetime>
+				</ion-item>
+			</ion-col>
+			<ion-col class="ion-no-padding">
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && resultForm.controls['result_to'].errors?.required }">
+					<ion-datetime class="form-control-lg ion-no-padding" placeholder="To Date" formControlName="result_to"></ion-datetime>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-radio-group allow-empty-selection formControlName="item_time">
+			<ion-row radio-group class="item-digits">
+				<ion-col>
+					<ion-item class="form-control form-group ion-item-radio" [ngClass]="{ 'form-error-dynamic-input': submitted && resultForm.controls['item_time'].errors?.required }">
+						<ion-label>All</ion-label>
+						<ion-radio color="primary" value="All"></ion-radio>
+					</ion-item>
+				</ion-col>
+				<ion-col *ngFor="let item of items">
+					<ion-item class="form-control form-group ion-item-radio" [ngClass]="{ 'form-error-dynamic-input': submitted && resultForm.controls['item_time'].errors?.required }">
+						<ion-label>{{item.result_time}}</ion-label>
+						<ion-radio color="primary" value="{{item.result_time}}">{{item.result_time}}</ion-radio>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</ion-radio-group>
+	    <ion-button type="submit" shape="round" expand="full" size="large" class="shadow order_btn bg-color">VIEW RESULT</ion-button>
+	</form>
+</ion-content>

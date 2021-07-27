@@ -1,0 +1,24 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+		</ion-buttons>
+		<ion-buttons slot="primary" (click)="newCategoryModal('category','my-category-modal-css','createCategory')">
+			<ion-button>
+				<ion-icon name="add-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-start ion-padding-end">
+	<h6 class="subtitle">Categories List - {{categories.length}}</h6>
+	<ion-grid *ngIf="categories">
+		<ion-row class="categoryLists" *ngFor="let category of categories" (click)="presentActionSheet(category.id,category.category_name)">
+			<ion-col size="12" class="category_name">
+			  <h3>{{category.category_name}}</h3>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

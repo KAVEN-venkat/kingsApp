@@ -1,0 +1,80 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start" (click)="closeWinnerModal()">
+			<ion-button>
+				<ion-icon name="arrow-back-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+	<form [formGroup]="winnerForm" class="new-item-form ion-no-padding" (ngSubmit)="winnerCreation()">
+		<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && winnerForm.controls['winner_date'].errors?.required }">
+			<ion-datetime class="form-control-lg ion-no-padding" placeholder="Select Date" formControlName="winner_date"></ion-datetime>
+		</ion-item>
+		<!--<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && winnerForm.controls['item_id'].errors?.required }">
+			<ion-select placeholder="Select Item" class="ion-no-padding" okText="Okay" cancelText="Close" formControlName="item_id" (ionChange)="getItemId($event)">
+				<ion-select-option class="ion-no-padding" *ngFor="let item of items" value="{{item.id}}">{{item.item_name}}</ion-select-option>
+			</ion-select>
+		</ion-item>-->
+		<ion-row>
+	    	<ion-col>
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && winnerForm.controls['result_time'].errors?.required }">
+					<!--<ion-datetime display-format="h:mm A" picker-format="h:mm A"class="form-control-lg ion-no-padding" formControlName="result_time" placeholder="Time"></ion-datetime>-->
+					<ion-select placeholder="Select Item" class="ion-no-padding" okText="Okay" cancelText="Close" formControlName="result_time" interface="action-sheet">
+						<ion-select-option class="ion-no-padding" *ngFor="let item of items" value="{{item.result_time}}">{{item.result_time}}</ion-select-option>
+				</ion-select>
+				  </ion-item>
+			</ion-col>
+			<!--<ion-col>
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && winnerForm.controls['total_digits'].errors?.required }">
+					<ion-input class="form-control-lg ion-no-padding" type="number" pattern="[0-9]*" formControlName="total_digits" placeholder="Total Digits" disabled></ion-input>
+				</ion-item>
+			</ion-col>-->
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && winnerForm.controls['winnerD'].errors?.required }">
+				<ion-input class="form-control-lg ion-no-padding" type="number" pattern="[0-9]*" formControlName="winnerD" placeholder="D"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col>
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && winnerForm.controls['winnerE'].errors?.required }">
+					<ion-input class="form-control-lg ion-no-padding" type="number" pattern="[0-9]*" formControlName="winnerE" placeholder="E"></ion-input>
+				</ion-item>				
+			</ion-col>
+			<ion-col>
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && winnerForm.controls['winnerA'].errors?.required }">
+					<ion-input class="form-control-lg ion-no-padding" type="number" pattern="[0-9]*" formControlName="winnerA" placeholder="A"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col>
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && winnerForm.controls['winnerB'].errors?.required }">
+					<ion-input class="form-control-lg ion-no-padding" type="number" pattern="[0-9]*" formControlName="winnerB" placeholder="B"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col>
+				<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && winnerForm.controls['winnerC'].errors?.required }">
+					<ion-input class="form-control-lg ion-no-padding" type="number" pattern="[0-9]*" formControlName="winnerC" placeholder="C"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-button type="submit" shape="round" expand="full" size="large" class="shadow login_btn bg-color">Save</ion-button>
+		<!--<div *ngIf="digits.length > 0">
+			<ion-grid class="ion-no-padding lucky_price">
+				<ion-row *ngFor="let ticket of t.controls; let i = index" [formGroup]="ticket">
+					<ion-col>
+						<div>
+							<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input':submitted && ticket.status == 'INVALID' }">
+						    	<ion-input class="form-control-lg ion-no-padding" type="tel" pattern="[0-9]*" placeholder="Winning Item" formControlName="winning_item" (ionChange)="onEnterWinner($event)"></ion-input>
+							</ion-item>
+						</div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			<br />
+		<ion-button type="submit" shape="round" expand="full" size="large" class="shadow login_btn bg-color">Save</ion-button>
+		</div>-->
+	</form>
+</ion-content>

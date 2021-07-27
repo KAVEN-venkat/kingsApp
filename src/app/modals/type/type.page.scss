@@ -1,0 +1,33 @@
+:host{
+	.form-control {
+		background: #ffffff !important;
+		border-radius: 40px !important;
+		border: 1px solid rgba(0, 0, 0, 0.08) !important;
+	}
+	.form-group {
+		margin-bottom: 0.5rem !important;
+	}
+	.form-control-lg {
+		font-size: 18px;
+	}
+	.font-weight-normal {
+		font-weight: bold !important;
+		font-size: 30px;
+	}
+	ion-select{
+		max-width: 100%; 
+		width: 100%
+	}
+	.bg-color{
+		--background: #6d00be !important;
+		color:#ffffff;
+		box-shadow: none !important;
+	}
+	.fnt-size{
+		font-size: 24px;
+	}
+	.header::after {
+		background-image: none;
+	}
+
+}

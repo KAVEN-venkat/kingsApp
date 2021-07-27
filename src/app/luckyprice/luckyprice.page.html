@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+		</ion-buttons>
+		<ion-buttons slot="primary" (click)="newSchemeModal('scheme','lucky-modal','createScheme')">
+			<ion-button>
+				<ion-icon name="add-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row class="header-section">
+			<ion-col class="ion-text-center">ITEMS</ion-col>
+			<ion-col class="ion-text-center">DIGIT</ion-col>
+			<ion-col class="ion-text-center">PRICE (Rs.)</ion-col>
+			<ion-col class="ion-text-right">BONUS</ion-col>
+			<ion-col class="ion-text-right">ST</ion-col>
+		</ion-row>
+		<ion-row *ngFor="let luckyPrice of luckyPrices" class="luckyprice-list" (click)="presentActionSheet(luckyPrice.id,luckyPrice.item.item_name)">
+			<ion-col class="ion-text-center">{{luckyPrice.item.item_name}} ({{luckyPrice.item.category.category_name}})</ion-col>
+			<ion-col class="ion-text-center">{{luckyPrice.digit}}</ion-col>
+			<ion-col class="ion-text-right">{{luckyPrice.price}}</ion-col>
+			<ion-col class="ion-text-right">{{luckyPrice.bonus}}</ion-col>
+			<ion-col class="ion-text-right">{{luckyPrice.stbonus}}</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

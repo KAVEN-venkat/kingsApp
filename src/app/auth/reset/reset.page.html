@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/forgot"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="">
+  <!-- <div class="theme-bg"></div> -->
+  <div class="auth-content">
+    <div padding-horizontal class="animated fadeInDown">
+      <img src="../../assets/logo.png" alt="logo" class="logo">
+    </div>
+  <form #form="ngForm" class="reset-form" method="post" (ngSubmit)="reset(form)">
+  	<h3 class="ion-text-center">Change <strong>Paasword</strong></h3><br>
+  	<ion-item class="form-control form-group" lines="none">
+      <ion-input class="form-control-lg" ngModel type="password" name="current_password" placeholder="Current Password"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-control form-group" lines="none">
+      <ion-input class="form-control-lg" ngModel type="password" name="new_password" placeholder="New Password"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-control form-group" lines="none">
+      <ion-input class="form-control-lg" ngModel type="password" name="confirm_password" placeholder="Confirn Password"></ion-input>
+    </ion-item>
+  	<br>
+    <ion-button type="submit" shape="round" expand="full" size="large" (click)="login()" class="shadow reset_btn bg-color">Update Password</ion-button>
+  </form>
+</div>
+</ion-content>

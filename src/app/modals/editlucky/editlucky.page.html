@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start" (click)="dismiss()">
+			<ion-button>
+				<ion-icon name="arrow-back-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">{{title}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="editluckyForm" class="new-item-form ion-no-padding" method="post" (ngSubmit)="luckyUpdate()">
+    <ion-grid class="ion-no-padding lucky_price">
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && editluckyForm.controls['price'].errors?.required }">
+            <ion-input class="form-control-lg ion-no-padding" type="tel" formControlName="price" placeholder="Price"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && editluckyForm.controls['bonus'].errors?.required }">
+            <ion-input class="form-control-lg ion-no-padding" type="tel" formControlName="bonus" placeholder="Bonus"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && editluckyForm.controls['stbonus'].errors?.required }">
+        <ion-input class="form-control-lg ion-no-padding" type="tel" formControlName="stbonus" placeholder="ST Bonus"></ion-input>
+    </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+	<br />
+	<ion-button type="submit" shape="round" expand="full" size="large" class="shadow login_btn bg-color">Save</ion-button>
+	</form>
+</ion-content>

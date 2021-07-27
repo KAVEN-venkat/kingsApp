@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+			
+		</ion-buttons>
+		<ion-buttons slot="primary">
+			<ion-button>
+				<ion-icon name="log-out-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button full class="submit-button" (click)="listPairedDevices()">
+    <ion-icon name="refresh"></ion-icon>&nbsp;Refresh Bluetooth Devices</button>
+  <ion-row>
+    <ion-col>
+      <!-- <ion-list radio-group [(ngModel)]="pairedDeviceID" *ngIf="listToggle">
+        <ion-item *ngFor="let i of pairedList;let j=index">
+          <ion-label>{{i.name}}</ion-label>
+          <ion-radio value="{{j}}" ></ion-radio>
+        </ion-item>
+      </ion-list> -->
+		<ion-radio-group *ngIf="listToggle" (ionChange)="onChangeHandler($event)">
+		<ion-item *ngFor="let i of pairedList;let j=index">
+			<ion-label>{{i.name}}</ion-label>
+			<ion-radio value="{{j}}"></ion-radio>
+		</ion-item>
+		</ion-radio-group>
+    </ion-col>
+  </ion-row>
+  <button ion-button full class="submit-button" *ngIf="listToggle" (click)="selectDevice()">
+    <ion-icon name="bluetooth"></ion-icon>&nbsp;Connect Bluetooth Devices</button>
+  <!-- <ion-list>
+    <ion-item>
+      <ion-label floating>Type The Data You want to Send</ion-label>
+      <ion-input type="text" name="datasend" [(ngModel)]="dataSend"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button full class="submit-button" (click)="sendData()">
+    <ion-icon name="send"></ion-icon>&nbsp;Send Data Via Bluetooth
+  </button>
+  <button ion-button full class="submit-button" (click)="readData()">
+    <ion-icon name="send"></ion-icon>&nbsp;Read Data Via Bluetooth
+  </button> -->
+</ion-content>

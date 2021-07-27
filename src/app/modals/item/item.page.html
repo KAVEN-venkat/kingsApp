@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons (click)="dismiss()" slot="primary">
+			<ion-button>
+				<ion-icon name="close-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">{{title}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<form [formGroup]="itemForm" class="new-item-form ion-no-padding" method="post" (ngSubmit)="itemCreation()">
+	<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && itemForm.controls['category_id'].errors?.required }">
+		<ion-select interface="action-sheet" placeholder="Select Category" class="ion-no-padding" *ngIf="categories" formControlName="category_id"> 
+			<ion-select-option  class="ion-no-padding" *ngFor="let category of categories; let i = index" value="{{category.id}}" selected="i === {{categoryId}}">{{category.category_name}}</ion-select-option></ion-select>
+		</ion-item>
+	<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && itemForm.controls['item_name'].errors?.required }">
+	    <ion-input class="form-control-lg ion-no-padding" type="text" formControlName="item_name" placeholder="Name"></ion-input>
+	</ion-item>
+	<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && itemForm.controls['item_digits'].errors?.required }">
+      <ion-input class="form-control-lg ion-no-padding" type="tel" formControlName="item_digits" placeholder="Total Digits"></ion-input>
+	</ion-item>
+	<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && itemForm.controls['result_time'].errors?.required }">
+      <ion-datetime display-format="h:mm A" picker-format="h:mm A"class="form-control-lg ion-no-padding" formControlName="result_time" placeholder="Time"></ion-datetime>
+	</ion-item>
+	<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && itemForm.controls['result_code'].errors?.required }">
+      <ion-input class="form-control-lg ion-no-padding" type="text" formControlName="result_code" placeholder="Result Code"></ion-input>
+	</ion-item>
+	<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && itemForm.controls['item_price'].errors?.required }">
+    	<ion-input class="form-control-lg ion-no-padding" type="tel" formControlName="item_price" placeholder="Price"></ion-input>
+	</ion-item>
+	<br />
+	<ion-button type="submit" shape="round" expand="full" size="large" class="shadow login_btn bg-color">Save</ion-button>
+	</form>
+</ion-content>

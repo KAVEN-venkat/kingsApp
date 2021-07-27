@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+		</ion-buttons>
+		<ion-buttons slot="primary">
+			<ion-button>
+				<ion-icon name="log-out-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="profileForm" class="profile-form ion-padding" method="post" (ngSubmit)="updateProfile()">
+    <ion-thumbnail class="thumbnail_img">
+		<!-- <img src="../../assets/logo-header.png" *ngIf="customer && customer.photo != null">
+    <img src="{{img_url}}images/no_img.png" *ngIf="customer && customer.photo == null"> -->
+    <img [src]="image" />
+    <ion-icon name="camera" class="camera-icon" (click)="selectImage()"></ion-icon>
+	</ion-thumbnail>
+	<h6 class="subtitle">Basic Information</h6>
+    <ion-label position="stacked">First Name</ion-label>
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && profileForm.controls['first_name'].errors?.required }">
+      	<ion-input class="form-control-lg ion-no-padding" formControlName="first_name" type="text" placeholder="First Name"></ion-input>
+    </ion-item>
+    <ion-label position="stacked">Last Name</ion-label>
+    <ion-item class="form-control form-group" lines="none">
+      	<ion-input class="form-control-lg ion-no-padding" formControlName="last_name" type="text" placeholder="Last Name"></ion-input>
+    </ion-item>
+    <ion-label position="stacked">Mobile</ion-label>
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && profileForm.controls['mobile'].errors?.required }">
+      <ion-input class="form-control-lg ion-no-padding" formControlName="mobile" type="tel" placeholder="Mobile Number"></ion-input>
+    </ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && profileForm.controls['email'].errors?.required }">
+      <ion-input class="form-control-lg ion-no-padding" formControlName="email" type="email" placeholder="Email"></ion-input>
+    </ion-item>
+  	<h6 class="subtitle">Address</h6>
+  	<ion-label position="stacked">Address</ion-label>
+    <ion-item class="form-control form-group" lines="none">
+      <ion-input class="form-control-lg ion-no-padding" formControlName="address" type="text" placeholder="Address"></ion-input>
+    </ion-item>   
+    <ion-row>
+      <ion-col>
+        <ion-label position="stacked">Country</ion-label>
+        <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && profileForm.controls['country'].errors?.required }">
+          <ion-select placeholder="Select Country" class="ion-no-padding" formControlName="country" okText="Ok" cancelText="Close" (ionChange)="getStates($event)">
+            <ion-select-option class="ion-no-padding" *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-label position="stacked">State</ion-label>
+        <ion-item class="form-control form-group" lines="none">
+          <ion-select placeholder="Select State" class="ion-no-padding" formControlName="state" okText="Ok" cancelText="Close" (ionChange)="getCities($event)">
+            <ion-select-option class="ion-no-padding" *ngFor="let state of states" value="{{state.id}}">{{state.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label position="stacked">City</ion-label>
+        <ion-item class="form-control form-group" lines="none">
+          <ion-select placeholder="Select City" class="ion-no-padding" formControlName="city" okText="Ok" cancelText="Close">
+            <ion-select-option class="ion-no-padding" *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-label position="stacked">Pincode</ion-label>
+        <ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && profileForm.controls['pincode'].errors?.required }">
+          <ion-input class="form-control-lg ion-no-padding" formControlName="pincode" type="text" placeholder="Pincode"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-button type="submit" shape="round" expand="full" size="large" class="shadow register_btn bg-color">SUBMIT</ion-button>
+  </form>
+</ion-content>

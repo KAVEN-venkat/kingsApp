@@ -1,0 +1,62 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header class="ion-no-border">
+        <ion-toolbar color="" class="user-profile">
+          <ion-item lines="none" class="item-content ion-no-border">
+            <ion-avatar slot="start" class="user-avatar">
+              <img src="{{image}}" />
+            </ion-avatar>
+            <ion-label>
+              <ion-text >
+                <h1><strong>{{userName}}</strong></h1>
+              </ion-text>
+              <ion-text>
+                <h3>
+                  {{email}}
+                </h3>
+              </ion-text>
+              <ion-menu-toggle class="mto" auto-hide="false">
+                <a class="text08" tappable (click)="goToEditProfile()">
+                  <ion-text>
+                    <ion-icon name="create-outline"></ion-icon>
+                    <strong>Edit Profile</strong>
+                  </ion-text>
+                </a> <ion-text> | </ion-text> 
+                <a class="text08" tappable (click)="logout()">
+                  <ion-text>
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    <strong>Logout</strong>
+                  </ion-text>
+                </a>
+              </ion-menu-toggle>
+            </ion-label>
+          </ion-item>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="deeppurple-theme-bg">
+        <ion-list id="inbox-list">
+          <!-- <ion-list-header>Inbox</ion-list-header>
+          <ion-note>hi@ionicframework.com</ion-note> -->
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <!-- <ion-list id="labels-list">
+          <ion-list-header>Labels</ion-list-header>
+
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list> -->
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,171 @@
+ion-menu ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+}
+
+ion-menu.md ion-content {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+ion-menu.md ion-list {
+  padding: 20px 0;
+}
+
+ion-menu.md ion-note {
+  margin-bottom: 30px;
+}
+
+ion-menu.md ion-list-header,
+ion-menu.md ion-note {
+  padding-left: 10px;
+}
+
+ion-menu.md ion-list#inbox-list {
+  border-bottom: 0px solid var(--ion-color-step-150, #d7d8da);
+  padding: 0px;
+  background: transparent;
+}
+
+ion-menu.md ion-list#inbox-list ion-list-header {
+  font-size: 22px;
+  font-weight: 600;
+
+  min-height: 20px;
+}
+
+ion-menu.md ion-list#labels-list ion-list-header {
+  font-size: 16px;
+
+  margin-bottom: 18px;
+
+  color: #757575;
+
+  min-height: 26px;
+}
+
+ion-menu.md ion-item {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border-radius: 4px;
+}
+
+ion-menu.md ion-item.selected {
+  /* --background: rgba(var(--ion-color-primary-rgb), 0.14); */
+  --background: #a700ff;
+  color: #ffffff;
+}
+
+ion-menu.md ion-item.selected ion-icon {
+  /* color: var(--ion-color-primary); */
+  color: #ffffff;
+}
+
+ion-menu.md ion-item ion-icon {
+  color: #616e7e;
+}
+
+ion-menu.md ion-item ion-label {
+  font-weight: 500;
+}
+
+ion-menu.ios ion-content {
+  --padding-bottom: 20px;
+}
+
+ion-menu.ios ion-list {
+  padding: 20px 0 0 0;
+}
+
+ion-menu.ios ion-note {
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+ion-menu.ios ion-item {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 50px;
+}
+
+ion-menu.ios ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.ios ion-item ion-icon {
+  font-size: 24px;
+  color: #73849a;
+}
+
+ion-menu.ios ion-list#labels-list ion-list-header {
+  margin-bottom: 8px;
+}
+
+ion-menu.ios ion-list-header,
+ion-menu.ios ion-note {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+ion-menu.ios ion-note {
+  margin-bottom: 8px;
+}
+
+ion-note {
+  display: inline-block;
+  font-size: 16px;
+
+  color: var(--ion-color-medium-shade);
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}
+
+ion-header, ion-toolbar, ion-header ion-item{
+    --background: #fcedff !important;
+    --border-width: 0;
+    backdrop-filter: blur(5px);
+     -webkit-backdrop-filter: blur(5px); 
+}
+
+ion-content{
+    --background: #fcedff !important;
+    --background: -moz-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: -webkit-gradient(left top, left bottom, color-stop(0%, #fcedff), color-stop(100%, #ffffff)) !important;
+   --background: -webkit-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: -o-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: -ms-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: linear-gradient(to bottom, #fcedff 0%, #ffffff 100%) !important;
+    --filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcedff', endColorstr='#ffffff', GradientType=0) !important;
+    --background-attachment: fixed !important;
+    --background-position: center top !important;
+    --background-size: 100% 100% !important;
+}
+.deeppurple-theme-bg{
+    color:#ffffff;
+    --background: #a700ff;
+    --background: -moz-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
+    --background: -webkit-gradient(left top, right bottom, color-stop(0%, #a700ff), color-stop(100%, #00189a));
+    --background: -webkit-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
+    --background: -o-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
+    --background: -ms-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
+    --background: linear-gradient(135deg, #a700ff 0%, #00189a 100%);
+    --filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d800ff', endColorstr='#00189a', GradientType=1);
+}
+a, ion-menu.md ion-header ion-item ion-icon{
+  color: #6d00be !important;
+  position: relative;
+  top: 1.24px;
+}
+ion-avatar{
+  width: 60px;
+  height: 60px;
+}
+.item, .list, .item-content, .item-complex {
+--ion-background-color: transparent !important;
+}
+ion-item .item-inner{
+  border:0px !important;
+}

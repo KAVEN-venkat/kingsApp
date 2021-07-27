@@ -1,0 +1,79 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+.my-custom-modal-css .modal-wrapper, .my-item-modal-css .modal-wrapper, .my-itemprice-modal-css .modal-wrapper {
+	width: 90%;
+	min-height: 50%;
+    height: auto;
+	top: 20%;
+	position: absolute; 
+	display: block;  
+	border-radius:.8rem;
+}
+.my-item-modal-css .modal-wrapper {
+    min-height: 63% !important;
+    height: auto !important;
+}
+.my-category-modal-css .modal-wrapper {
+    min-height: 40% !important;
+    height: auto !important;
+    width: 90%;
+    border-radius:.8rem;
+}
+.my-itemprice-modal-css .modal-wrapper {
+	min-height: 40% !important;
+	height: auto !important;
+}
+ion-header, ion-toolbar{
+    --background: #fcedff !important;
+    --border-width: 0;
+    backdrop-filter: blur(5px);
+     -webkit-backdrop-filter: blur(5px); 
+  }
+ion-content{
+    --background: #fcedff !important;
+    --background: -moz-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: -webkit-gradient(left top, left bottom, color-stop(0%, #fcedff), color-stop(100%, #ffffff)) !important;
+   --background: -webkit-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: -o-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: -ms-linear-gradient(top, #fcedff 0%, #ffffff 100%) !important;
+    --background: linear-gradient(to bottom, #fcedff 0%, #ffffff 100%) !important;
+    --filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcedff', endColorstr='#ffffff', GradientType=0) !important;
+    --background-attachment: fixed !important;
+    --background-position: center top !important;
+    --background-size: 100% 100% !important;
+}
+.deeppurple-theme-bg{
+    color:#ffffff;
+    --background: #a700ff;
+    --background: -moz-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
+    --background: -webkit-gradient(left top, right bottom, color-stop(0%, #a700ff), color-stop(100%, #00189a));
+    --background: -webkit-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
+    --background: -o-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
+    --background: -ms-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
+    --background: linear-gradient(135deg, #a700ff 0%, #00189a 100%);
+    --filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d800ff', endColorstr='#00189a', GradientType=1);
+}

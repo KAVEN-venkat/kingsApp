@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+			
+		</ion-buttons>
+		<ion-buttons slot="primary">
+			<ion-button>
+				<ion-icon name="log-out-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list lines="none" class="settings-list">
+		<ion-item (click)="devices()">			
+			<ion-grid class="ion-no-padding">
+				<ion-row>
+					<ion-col size="9" class="ion-no-padding">
+						<h6 class="">Scan Device</h6>
+                        <p class="">All available blutooth devices</p>
+					</ion-col>
+					<ion-col size="3" class="ion-no-padding ion-text-end">
+						<ion-icon name="chevron-forward-outline"></ion-icon>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+		<ion-item>
+			<ion-grid class="ion-no-padding">
+				<ion-row>
+					<ion-col size="9" class="ion-no-padding">
+						<h6 class="">Email Notification</h6>
+                        <p class="">Default all notification will be sent</p>
+					</ion-col>
+					<ion-col size="3" class="ion-no-padding ion-text-end">
+						<ion-toggle name="grape" color="tertiary" checked></ion-toggle>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+		<ion-item>
+			<ion-grid class="ion-no-padding">
+				<ion-row>
+					<ion-col size="9" class="ion-no-padding">
+						<h6 class="">Change password</h6>
+                        <p class="">You must need your verified email</p>
+					</ion-col>
+					<ion-col size="3" class="ion-no-padding ion-text-end">
+						<ion-icon name="chevron-forward-outline"></ion-icon>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+	</ion-list>
+</ion-content>

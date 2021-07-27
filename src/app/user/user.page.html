@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button auto-hide="false"></ion-menu-button>
+			
+		</ion-buttons>
+		<ion-buttons slot="primary" (click)="newCustomerModal()">
+			<ion-button>
+				<ion-icon name="person-add-outline" class="logoutbtn"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center"><img src="../../assets/logo-header.png" alt="" class="header-logo"></ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-list *ngIf="customers?.length > 0; else NoCustomerTemp" class="ion-no-padding">
+		<ion-item-sliding>
+			<ion-item lines="full" *ngFor='let customer of customers' (click)="presentActionSheet(customer.id,customer.first_name)">
+				<ion-avatar slot="start">
+					<img src="{{img_url}}images/{{customer.photo}}" *ngIf="customer.photo != null">
+					<img src="{{img_url}}images/no_img.png" *ngIf="customer.photo == null">
+				</ion-avatar>
+				<ion-label>
+					<h2>{{customer.first_name}} {{customer.last_name}} 
+						<span *ngIf='customer.user_type == "Sub-Dealer"'>(Dealer)</span>
+						<span *ngIf='customer.user_type == "Customer"'>(Retailer)</span>
+					</h2>
+					<p>{{customer.mobile}}</p>
+					<p>{{customer.email}}</p>
+				</ion-label>
+			</ion-item>
+		</ion-item-sliding>
+	</ion-list>
+	<ng-template #NoCustomerTemp>
+		<h3 class="ion-text-center">No Customers Found</h3>
+	</ng-template>
+</ion-content>

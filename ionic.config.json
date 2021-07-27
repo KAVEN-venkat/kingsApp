@@ -1,0 +1,10 @@
+{
+  "name": "kingsApp",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

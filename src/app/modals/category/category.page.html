@@ -1,0 +1,20 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+		<ion-buttons (click)="dismiss()" slot="primary">
+			<ion-button>
+				<ion-icon name="close-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">{{title}}</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<form [formGroup]="categoryForm" class="new-item-form ion-no-padding" method="post" (ngSubmit)="categoryCreation()">
+	<ion-item class="form-control form-group" lines="none" [ngClass]="{ 'form-error-dynamic-input': submitted && categoryForm.controls['category_name'].errors?.required }">
+	    <ion-input class="form-control-lg ion-no-padding" type="text" formControlName="category_name" placeholder="Category Name"></ion-input>
+	</ion-item>
+	<br />
+	<ion-button type="submit" shape="round" expand="full" size="large" class="shadow login_btn bg-color">Save</ion-button>
+	</form>
+</ion-content>
